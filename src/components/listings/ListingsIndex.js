@@ -12,7 +12,7 @@ const ListingsIndex = (props) => {
     const dispatch = useDispatch()
 
     useEffect(()=> {
-        if(listings.length === 0) fetchListings()(dispatch)
+        if(listings.length === 0) fetchListings(pageNumber)(dispatch)
     }, [pageNumber, dispatch, listings])
         
     return (

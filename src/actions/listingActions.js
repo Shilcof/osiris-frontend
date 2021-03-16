@@ -2,7 +2,7 @@ const baseURL = 'http://localhost:3000'
 
 const configObj = (input) => {
     return {
-        method: 'PATCH',
+        method: 'GET',
         headers: {
             "Content-Type": "application/json",
             "Accepts": "application/json"
@@ -14,7 +14,7 @@ const configObj = (input) => {
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
         dispatch({type: "LOADING_LISTINGS"})
-        fetch(baseURL + '/listings', configObj(pageNumber))
+        fetch(baseURL + '/listings' + '?q=' + pageNumber)
             .then(res=>res.json())
             .then(listings => dispatch({type: "ADD_LISTINGS", listings})) 
     }
