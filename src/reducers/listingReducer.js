@@ -10,7 +10,7 @@ export default function listingReducer(state = {
         case "LOADING_LISTINGS":
             return {...state, loading: true}
         case "ADD_LISTINGS":
-            return {...state, [state.filter]: [...state[state.filter], ...action.listings], loading: false}
+            return {...state, [state.filter+"PageNumber"]: state[state.filter+"PageNumber"] + 1,[state.filter]: [...state[state.filter], ...action.listings], loading: false}
 
         // case "ADD_LISTING":
         //     return [...state, {...action.review, id: cuid()}]

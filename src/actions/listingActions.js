@@ -1,15 +1,15 @@
 const baseURL = 'http://localhost:3000'
 
-const configObj = (input) => {
-    return {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-            "Accepts": "application/json"
-        },
-        body: JSON.stringify(input)
-    }
-}
+// const configObj = (input) => {
+//     return {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accepts": "application/json"
+//         },
+//         body: JSON.stringify(input)
+//     }
+// }
 
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
