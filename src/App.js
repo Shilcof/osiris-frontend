@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-// import NavBar from '../components/NavBar';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       </header> */}
       <Router>
         <div>
-          {/* <NavBar /> */}
+          <NavBar />
           <Route exact path="/" render={() => <div>Home</div>} />
           {/* <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} /> */}
         </div>
