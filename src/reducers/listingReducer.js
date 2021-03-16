@@ -1,7 +1,7 @@
 export default function listingReducer(state = {
-    latest: {},
+    latest: [],
     latestPageNumber: 0,
-    local: {},
+    local: [],
     localPageNumber: 0,
     filter: "latest",
     loading: false
