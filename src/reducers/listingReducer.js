@@ -7,7 +7,7 @@ export default function listingReducer(state = {
     loading: false
 }, action) {
     switch (action.type) {
-        case "LOAD_LISTINGS":
+        case "LOADING_LISTINGS":
             return {...state, loading: true}
         case "ADD_LISTINGS":
             return {...state, [state.filter]: [...state[state.filter], ...action.listings], loading: false}
