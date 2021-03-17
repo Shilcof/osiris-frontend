@@ -24,20 +24,31 @@ const ListingForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
+
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
                     <label htmlFor="name" className="form-label" >Listing name</label>
                     <input type="text" id="name" value={listing.name} onChange={handleChange} className="form-control" ></input>
-                    {/* <%= invalid_feedback(@user, :username) %> */}
+                    {/* attach errors here from error reducer */}
                 </div>
             </div>
+
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
                     <label htmlFor="description" className="form-label" >Listing description</label>
                     <textarea rows="5" id="description" value={listing.description} onChange={handleChange} className="form-control" ></textarea>
                 </div>
             </div>
+
+            <div className="input-group mb-3">
+                <div className="custom-file">
+                    <input type="file" className="custom-file-input" id="image"></input>
+                    <label className="custom-file-label" htmlFor="image">Choose file</label>
+                </div>
+            </div>
+
             <input type="submit" className="btn btn-outline-primary btn-block" ></input>
+            
         </form>
     )
 }

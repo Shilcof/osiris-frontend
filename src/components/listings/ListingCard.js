@@ -2,7 +2,9 @@ const ListingCard = (props) => {
     return (
         <div className="col pb-3">
             <div className="card h-100">
-                <div className="card-body">
+                {props.listing.image_url ? <img src={props.listing.image_url} className="card-img" alt="listing" ></img> : 
+                <img src="https://miro.medium.com/max/2600/1*mtGIfXRPG2FG_zbKJhwWzA.png" className="card-img" alt="listing" ></img>}
+                <div className="card-img-overlay">
                     <h5 className="card-title">
                         {props.listing.name}
                     </h5>

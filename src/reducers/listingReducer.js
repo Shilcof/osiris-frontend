@@ -15,8 +15,7 @@ export default function listingReducer(state = {
             return {...state, [state.filter+"PageNumber"]: state[state.filter+"PageNumber"] + 1,[state.filter]: [...state[state.filter], ...action.listings], loading: false}
 
         case "ADD_LISTING":
-            console.log(action.listing)
-            if (state.filter !== "latest") return state
+            if (state.filter !== "latest" || state[state.filter].length === 0) return state
             return {...state, [state.filter]: [action.listing, ...state[state.filter]]}
 
         // case "DELETE_LISTING":

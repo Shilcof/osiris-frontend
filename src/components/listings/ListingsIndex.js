@@ -24,7 +24,7 @@ const ListingsIndex = (props) => {
     const trackScrolling = useCallback(() => {
         const wrappedElement = document.getElementById('listing-container');
         if (isBottom(wrappedElement)) {
-            if (!loading) fetchListings(pageNumber)(dispatch)
+            if (!loading && pageNumber !== 0) fetchListings(pageNumber)(dispatch)
         }
     },[pageNumber, dispatch, loading]);
     
@@ -32,6 +32,8 @@ const ListingsIndex = (props) => {
         document.addEventListener('scroll', trackScrolling);
         return () => document.removeEventListener('scroll', trackScrolling);
     },[trackScrolling])
+
+    console.log(pageNumber)
         
     return (
         <>
