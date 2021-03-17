@@ -1,4 +1,4 @@
-const Listing = (props) => {
+const ListingCard = (props) => {
     return (
         <div className="col pb-3">
             <div className="card">
@@ -15,4 +15,4 @@ const Listing = (props) => {
     )
 }
 
-export default Listing
+export default ListingCard
