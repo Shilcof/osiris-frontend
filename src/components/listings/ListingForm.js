@@ -1,22 +1,25 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 
+import { postListing } from "../../actions/listingActions"
+
 const ListingForm = (props) => {
 
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
 
     const [listing, setListing] = useState({
         name: "",
-        description: ""
+        description: "",
+        seller_id: "4"
     })
 
     const handleChange = e => {
-        setListing({[e.target.id]: e.target.value})
+        setListing({...listing, [e.target.id]: e.target.value})
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-
+        dispatch(postListing(listing))
     }
 
     return (
@@ -40,3 +43,14 @@ const ListingForm = (props) => {
 }
 
 export default ListingForm
+
+
+// const displayErrors = (errors) => {
+//     const messages = errors.message.split(',')
+//     errorMessages.innerHTML = `
+//         <p>${messages.length} errors prevented saving this track.</p>
+//     `
+//     for (const error of messages) {
+//         errorMessages.innerHTML += `<li>${error}.</li>`
+//     }
+// }
