@@ -26,7 +26,7 @@ export const postListing = listing => {
     return (dispatch) => {
         fetch(listingURL, configObj(listing))
             .then(res=>res.json())
-            .then(listing => dispatch({type: "ADD_LISTING", listing: listing.listing}))
+            .then(listing => dispatch({type: "ADD_LISTING", listing}))
             .catch(errors => dispatch({type: "ADD_ERRORS", errors}))
     }
 }

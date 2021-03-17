@@ -1,7 +1,7 @@
 const ListingCard = (props) => {
     return (
         <div className="col pb-3">
-            <div className="card">
+            <div className="card h-100">
                 <div className="card-body">
                     <h5 className="card-title">
                         {props.listing.name}
