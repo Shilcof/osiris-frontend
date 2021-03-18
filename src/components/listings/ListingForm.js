@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { postListing, redirected } from "../../actions/listingActions"
+import { resetErrors } from "../../actions/errorActions"
 
 const ListingForm = (props) => {
 
@@ -11,7 +12,10 @@ const ListingForm = (props) => {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        return dispatch(redirected)
+        return () => {
+            dispatch(redirected)
+            dispatch(resetErrors)
+        }
     }, [dispatch])
 
     const [listing, setListing] = useState({

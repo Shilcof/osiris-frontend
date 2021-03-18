@@ -1,12 +1,23 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import ListingCardInfo from "./ListingCardInfo"
 import ListingCardImage from "./ListingCardImage"
 import { Link } from "react-router-dom"
 
+import { resetErrors } from "../../../actions/errorActions"
+import { useDispatch } from "react-redux"
+
 const ListingCard = (props) => {
 
     const [hover, setHover] = useState(false)
+
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        return () => {
+            dispatch(resetErrors)
+        }
+    }, [dispatch])
 
     const onMouseEnter = () => {
         setHover(true)

@@ -32,6 +32,12 @@ export const showListing = listing => {
     })
 }
 
+export const loadingListings = () => {
+    return ({
+        type: "LOADING_LISTINGS"
+    })
+}
+
 export const redirected = () => {
     return ({
         type: "REDIRECTED"
@@ -40,7 +46,7 @@ export const redirected = () => {
 
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
-        dispatch({type: "LOADING_LISTINGS"})
+        dispatch(loadingListings)
         fetch(listingURL + '?q=' + pageNumber)
             .then(res=>res.json())
             .then(listings => dispatch(addListings(listings)))
@@ -49,7 +55,8 @@ export const fetchListings = (pageNumber) => {
 
 export const fetchListing = (id) => {
     return (dispatch) => {
-        dispatch({type: "LOADING_LISTINGS"})
+        dispatch(loadingListings)
+        dispatch(resetErrors)
         fetch(listingURL + '/' + id)
             .then(res=>res.json())
             .then(listing => {
@@ -64,7 +71,6 @@ export const fetchListing = (id) => {
 }
 
 export const postListing = listing => {
-    console.log(listing)
     const formData = new FormData()
     formData.append('name', listing.name)
     formData.append('description', listing.description)
@@ -72,6 +78,7 @@ export const postListing = listing => {
     formData.append('image', listing.image)
     console.log(formData)
     return (dispatch) => {
+        dispatch(resetErrors)
         fetch(listingURL, configObj(formData))
             .then(res=>res.json())
             .then(listing => dispatch(addListing(listing)))
