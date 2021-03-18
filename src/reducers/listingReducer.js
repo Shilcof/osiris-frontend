@@ -5,6 +5,7 @@ export default function listingReducer(state = {
     localPageNumber: 0,
     filter: "latest",
     show: {},
+    allLoaded: false,
     loading: false,
     shouldRedirect: false
 }, action) {
@@ -18,6 +19,7 @@ export default function listingReducer(state = {
                 ...state, 
                 [state.filter+"PageNumber"]: state[state.filter+"PageNumber"] + 1,
                 [state.filter]: [...state[state.filter], ...action.listings], 
+                allLoaded: action.listings.length < 21 ? true : false,
                 loading: false,
                 show: {}
             }
@@ -34,6 +36,9 @@ export default function listingReducer(state = {
 
         case "REDIRECTED":
             return {...state, shouldRedirect: false}
+
+        case "RESET_ALL_LOADED":
+            return {...state, allLoaded: false}
 
         // case "DELETE_LISTING":
         //     const index = state.findIndex(r=>r.id===action.id)

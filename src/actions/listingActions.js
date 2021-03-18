@@ -44,6 +44,12 @@ export const redirected = () => {
     })
 }
 
+export const resetAllLoaded = () => {
+    return ({
+        type: "RESET_ALL_LOADED"
+    })
+}
+
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
         dispatch(loadingListings())
