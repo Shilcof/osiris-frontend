@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 
 import {fetchListings} from '../../actions/listingActions'
 
-import Listing from './ListingCard'
+import Listing from './Card/ListingCard'
 import LoadingListing from './LoadingListing'
 
 const ListingsIndex = () => {
