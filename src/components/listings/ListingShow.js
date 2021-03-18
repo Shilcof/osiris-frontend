@@ -5,6 +5,7 @@ import { fetchListing } from "../../actions/listingActions"
 import { resetErrors } from "../../actions/errorActions"
 
 import NotFound from "../errors/NotFound"
+import ListingCardImage from "./Card/ListingCardImage"
 
 const ListingShow = (props) => {
 
@@ -21,8 +22,7 @@ const ListingShow = (props) => {
     const showListing = () => {
         return (
             <>
-                {listing.image_url ? <img src={listing.image_url} className="card-img" alt="listing" ></img> : 
-                <img src="https://miro.medium.com/max/2600/1*mtGIfXRPG2FG_zbKJhwWzA.png" className="card-img" alt="listing" ></img>}
+                <ListingCardImage image_url={listing.image_url} />
                 <div className="card-img-overlay">
                     <h5 className="card-title">
                         {listing.name}
