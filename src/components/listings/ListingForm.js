@@ -48,7 +48,7 @@ const ListingForm = (props) => {
                 <div className="col-md-12 mb-3">
                     <label htmlFor="name" className="form-label" >Listing name</label>
                     <input type="text" id="name" value={listing.name} onChange={handleChange} 
-                    className={errors.name ? "form-control is-invalid" : "form-control"} 
+                        className={errors.name ? "form-control is-invalid" : "form-control"} 
                     ></input>
                     {errors.name ? <div className="invalid-feedback" >Name {errors.name.join(", ")}</div> : null}
                 </div>
@@ -58,7 +58,7 @@ const ListingForm = (props) => {
                 <div className="col-md-12 mb-3">
                     <label htmlFor="description" className="form-label" >Listing description</label>
                     <textarea rows="5" id="description" value={listing.description} onChange={handleChange} 
-                    className={errors.description ? "form-control is-invalid" : "form-control"}
+                        className={errors.description ? "form-control is-invalid" : "form-control"}
                     ></textarea>
                     {errors.description ? <div className="invalid-feedback" >Description {errors.description.join(", ")}</div> : null}
                 </div>
