@@ -14,7 +14,7 @@ const ListingShow = (props) => {
 
     useEffect(()=> {
         fetchListing(props.match.params.listingId)(dispatch)
-        return dispatch(resetErrors)
+        return dispatch(resetErrors())
     }, [dispatch, props.match.params.listingId])
 
     const showListing = () => {

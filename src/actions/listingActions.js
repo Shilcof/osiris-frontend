@@ -7,12 +7,29 @@ const listingURL = baseURL + '/listings'
 const configObj = input => {
     return {
         method: 'POST',
-        // headers: {
-        //     "Content-Type": "multipart/form-data",
-        //     "Accepts": "application/json"
-        // },
         body: input
     }
+}
+
+export const addListings = listings => {
+    return ({
+        type: "ADD_LISTINGS",
+        listings
+    })
+}
+
+export const addListing = listing => {
+    return ({
+        type: "ADD_LISTING",
+        listing
+    })
+}
+
+export const showListing = listing => {
+    return ({
+        type: "SHOW_LISTING",
+        listing
+    })
 }
 
 export const redirected = () => {
@@ -26,7 +43,7 @@ export const fetchListings = (pageNumber) => {
         dispatch({type: "LOADING_LISTINGS"})
         fetch(listingURL + '?q=' + pageNumber)
             .then(res=>res.json())
-            .then(listings => dispatch({type: "ADD_LISTINGS", listings})) 
+            .then(listings => dispatch(addListings(listings)))
     }
 }
 
@@ -37,7 +54,7 @@ export const fetchListing = (id) => {
             .then(res=>res.json())
             .then(listing => {
                 if (listing.name) {
-                    dispatch({type: "SHOW_LISTING", listing})
+                    dispatch(showListing(listing))
                 } else {
                     throw listing;
                 }
@@ -57,7 +74,7 @@ export const postListing = listing => {
     return (dispatch) => {
         fetch(listingURL, configObj(formData))
             .then(res=>res.json())
-            .then(listing => dispatch({type: "ADD_LISTING", listing}))
-            .catch(errors => dispatch({type: "ADD_ERRORS", errors}))
+            .then(listing => dispatch(addListing(listing)))
+            .catch(errors => dispatch(addErrors(errors)))
     }
 }
