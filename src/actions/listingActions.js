@@ -5,11 +5,11 @@ const listingURL = baseURL + '/listings'
 const configObj = input => {
     return {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accepts": "application/json"
-        },
-        body: JSON.stringify(input)
+        // headers: {
+        //     "Content-Type": "multipart/form-data",
+        //     "Accepts": "application/json"
+        // },
+        body: input
     }
 }
 
@@ -22,9 +22,27 @@ export const fetchListings = (pageNumber) => {
     }
 }
 
-export const postListing = listing => {
+export const fetchListing = (id) => {
     return (dispatch) => {
-        fetch(listingURL, configObj(listing))
+        dispatch({type: "LOADING_LISTINGS"})
+        fetch(listingURL + '/' + id)
+            .then(res=>res.json())
+            .then(listing => dispatch({type: "SHOW_LISTING", listing}))
+            .catch(errors => dispatch({type: "ADD_ERRORS", errors}))
+    }
+}
+
+export const postListing = listing => {
+    console.log(listing)
+    const formData = new FormData()
+    formData.append('name', listing.name)
+    formData.append('description', listing.description)
+    formData.append('seller_id', listing.seller_id)
+    // formData.append('listing', listing)
+    formData.append('image', listing.image)
+    console.log(formData)
+    return (dispatch) => {
+        fetch(listingURL, configObj(formData))
             .then(res=>res.json())
             .then(listing => dispatch({type: "ADD_LISTING", listing}))
             .catch(errors => dispatch({type: "ADD_ERRORS", errors}))

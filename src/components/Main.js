@@ -1,6 +1,7 @@
 import {Route} from 'react-router-dom';
 import ListingsIndex from './listings/ListingsIndex'
 import ListingForm from './listings/ListingForm'
+import ListingShow from './listings/ListingShow'
 import About from './about/About'
 
 const Main = () => {
@@ -8,7 +9,8 @@ const Main = () => {
         <div className="container-fluid pt-3">
             <Route exact path="/" render={() => <ListingForm />} />
             <Route exact path="/about" render={() => <About />} />
-            <Route path="/listings" render={routerProps => <ListingsIndex {...routerProps}/>} />
+            <Route exact path="/listings" render={routerProps => <ListingsIndex {...routerProps}/>} />
+            <Route path={"/listings/:listingId"} render={routerProps => <ListingShow {...routerProps} /> }/>
         </div>
     )
 }

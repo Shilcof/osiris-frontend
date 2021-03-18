@@ -4,6 +4,7 @@ export default function listingReducer(state = {
     local: [],
     localPageNumber: 0,
     filter: "latest",
+    show: {},
     loading: false
 }, action) {
     switch (action.type) {
@@ -12,11 +13,20 @@ export default function listingReducer(state = {
             return {...state, loading: true}
 
         case "ADD_LISTINGS":
-            return {...state, [state.filter+"PageNumber"]: state[state.filter+"PageNumber"] + 1,[state.filter]: [...state[state.filter], ...action.listings], loading: false}
+            return {
+                ...state, 
+                [state.filter+"PageNumber"]: state[state.filter+"PageNumber"] + 1,
+                [state.filter]: [...state[state.filter], ...action.listings], 
+                loading: false,
+                show: {}
+            }
 
         case "ADD_LISTING":
             if (state.filter !== "latest" || state[state.filter].length === 0) return state
             return {...state, [state.filter]: [action.listing, ...state[state.filter]]}
+
+        case "SHOW_LISTING":
+            return {...state, show: action.listing, loading: false}
 
         // case "DELETE_LISTING":
         //     const index = state.findIndex(r=>r.id===action.id)

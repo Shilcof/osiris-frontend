@@ -10,11 +10,16 @@ const ListingForm = (props) => {
     const [listing, setListing] = useState({
         name: "",
         description: "",
-        seller_id: "4"
+        seller_id: "4",
+        image: {}
     })
 
     const handleChange = e => {
         setListing({...listing, [e.target.id]: e.target.value})
+    }
+
+    const handleFileAddition = e => {
+        setListing({...listing, image: e.target.files[0]})
     }
 
     const handleSubmit = e => {
@@ -42,13 +47,13 @@ const ListingForm = (props) => {
 
             <div className="input-group mb-3">
                 <div className="custom-file">
-                    <input type="file" className="custom-file-input" id="image"></input>
-                    <label className="custom-file-label" htmlFor="image">Choose file</label>
+                    <input type="file" className="custom-file-input" id="image" onChange={handleFileAddition}></input>
+                    <label className="custom-file-label" htmlFor="image">{listing.image.name ? listing.image.name : "Choose file"}</label>
                 </div>
             </div>
 
             <input type="submit" className="btn btn-outline-primary btn-block" ></input>
-            
+
         </form>
     )
 }

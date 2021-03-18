@@ -31,10 +31,8 @@ const ListingsIndex = (props) => {
     useEffect(() => {
         document.addEventListener('scroll', trackScrolling);
         return () => document.removeEventListener('scroll', trackScrolling);
-    },[trackScrolling])
+    },[trackScrolling, pageNumber])
 
-    console.log(pageNumber)
-        
     return (
         <>
             <div id="listing-container" className="container" style={{maxWidth: 1000}}>
