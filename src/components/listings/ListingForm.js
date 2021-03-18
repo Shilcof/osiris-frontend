@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 import { postListing } from "../../actions/listingActions"
 
 const ListingForm = (props) => {
+
+    const shouldRedirect = useSelector(state=>state.listings.shouldRedirect)
 
     const dispatch = useDispatch()
 
