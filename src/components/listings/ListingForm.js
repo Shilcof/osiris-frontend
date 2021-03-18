@@ -14,8 +14,8 @@ const ListingForm = (props) => {
 
     useEffect(()=>{
         return () => {
-            dispatch(redirected)
-            dispatch(resetErrors)
+            dispatch(redirected())
+            dispatch(resetErrors())
         }
     }, [dispatch])
 

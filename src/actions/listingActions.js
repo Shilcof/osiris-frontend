@@ -87,8 +87,6 @@ export const postListing = listing => {
                     dispatch(addListing(listing))
                 }
             })
-            .catch(errors => {
-                dispatch(addErrors(errors))
-            })
+            .catch(errors => dispatch(addErrors(errors)))
     }
 }
