@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchListing } from "../../actions/listingActions"
+import { resetErrors } from "../../actions/errorActions"
 
 import NotFound from "../NotFound"
 
@@ -13,6 +14,7 @@ const ListingShow = (props) => {
 
     useEffect(()=> {
         fetchListing(props.match.params.listingId)(dispatch)
+        return dispatch(resetErrors)
     }, [dispatch, props.match.params.listingId])
 
     const showListing = () => {
