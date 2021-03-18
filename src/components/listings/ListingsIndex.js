@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
-import {fetchListings} from '../../actions/listingActions'
+import { fetchListings } from '../../actions/listingActions'
 
 import Listing from './Card/ListingCard'
 import LoadingListing from './LoadingListing'
@@ -10,7 +10,7 @@ const ListingsIndex = () => {
 
     const listings = useSelector(store=>store.listings[store.listings.filter])
     const pageNumber = useSelector(store=>store.listings[store.listings.filter+"PageNumber"])
-    const loading = useSelector(store=>store.loading)
+    const loading = useSelector(store=>store.listings.loading)
     const dispatch = useDispatch()
 
     useEffect(()=> {
@@ -25,14 +25,16 @@ const ListingsIndex = () => {
     const trackScrolling = useCallback(() => {
         const wrappedElement = document.getElementById('listing-container');
         if (isBottom(wrappedElement)) {
-            if (!loading && pageNumber !== 0) fetchListings(pageNumber)(dispatch)
+            if (!loading && pageNumber !== 0) {
+                fetchListings(pageNumber)(dispatch)
+            }
         }
     },[pageNumber, dispatch, loading]);
     
     useEffect(() => {
         document.addEventListener('scroll', trackScrolling);
         return () => document.removeEventListener('scroll', trackScrolling);
-    },[trackScrolling, pageNumber])
+    },[trackScrolling])
     // Infinite Scrolling End
 
     return (

@@ -46,7 +46,7 @@ export const redirected = () => {
 
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
-        dispatch(loadingListings)
+        dispatch(loadingListings())
         fetch(listingURL + '?q=' + pageNumber)
             .then(res=>res.json())
             .then(listings => dispatch(addListings(listings)))
@@ -55,8 +55,8 @@ export const fetchListings = (pageNumber) => {
 
 export const fetchListing = (id) => {
     return (dispatch) => {
-        dispatch(loadingListings)
-        dispatch(resetErrors)
+        dispatch(loadingListings())
+        dispatch(resetErrors())
         fetch(listingURL + '/' + id)
             .then(res=>res.json())
             .then(listing => {
@@ -77,7 +77,7 @@ export const postListing = listing => {
     formData.append('seller_id', listing.seller_id)
     formData.append('image', listing.image)
     return (dispatch) => {
-        dispatch(resetErrors)
+        dispatch(resetErrors())
         fetch(listingURL, configObj(formData))
             .then(res=>res.json())
             .then(listing => {
