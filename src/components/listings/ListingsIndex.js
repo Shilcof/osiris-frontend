@@ -17,7 +17,7 @@ const ListingsIndex = () => {
         if(pageNumber === 0) fetchListings(pageNumber)(dispatch)
     }, [pageNumber, dispatch, listings])
 
-    // Infinite Scrolling
+    // Infinite Scrolling Start
     const isBottom = (el) => {
         return el.getBoundingClientRect().bottom <= window.innerHeight;
     }
@@ -33,6 +33,7 @@ const ListingsIndex = () => {
         document.addEventListener('scroll', trackScrolling);
         return () => document.removeEventListener('scroll', trackScrolling);
     },[trackScrolling, pageNumber])
+    // Infinite Scrolling End
 
     return (
         <>
