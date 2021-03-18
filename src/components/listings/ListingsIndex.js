@@ -6,7 +6,7 @@ import {fetchListings} from '../../actions/listingActions'
 import Listing from './ListingCard'
 import LoadingListing from './LoadingListing'
 
-const ListingsIndex = (props) => {
+const ListingsIndex = () => {
 
     const listings = useSelector(store=>store.listings[store.listings.filter])
     const pageNumber = useSelector(store=>store.listings[store.listings.filter+"PageNumber"])
