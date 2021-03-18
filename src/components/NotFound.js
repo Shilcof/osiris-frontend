@@ -6,7 +6,7 @@ const NotFound = (props) => {
             </div>
             <div className="text-center py-4 my-4">
                 <h1 className="text-wrap text-break">Sorry the route {props.match.url} does not yet exist</h1>
-                <p className="lead">Follow the links in the navbar to start view listing</p>
+                <p className="lead">Follow the links in the navbar to start viewing listings</p>
             </div>
         </div>
     )

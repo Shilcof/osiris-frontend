@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchListing } from "../../actions/listingActions"
 
+import NotFound from "../NotFound"
+
 const ListingShow = (props) => {
 
     const listing = useSelector(store=>store.listings.show)
@@ -31,11 +33,11 @@ const ListingShow = (props) => {
     }
 
     return (
-        <div className="card h-100">
+        <>
             { loading ? "LOADING" : null }
-            { listing.name ? showListing() : null }
-            { Object.keys(errors).length === 0 ? null : errors.error}
-        </div>
+            { listing.name ? <div className="card h-100">{showListing()}</div> : null }
+            { Object.keys(errors).length === 0 ? null : <NotFound match={props.match} />}
+        </>
     )
 }
 
