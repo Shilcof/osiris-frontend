@@ -9,11 +9,17 @@ const Main = () => {
     return (
         <div className="container-fluid pt-3">
             <Switch>
-                <Route exact path="/" render={() => <ListingForm />} />
+
+                <Route exact path="/" render={routerProps => <ListingForm {...routerProps}/>} />
+
                 <Route exact path="/about" render={() => <About />} />
+
                 <Route exact path="/listings" render={routerProps => <ListingsIndex {...routerProps}/>} />
+
                 <Route path="/listings/:listingId" render={routerProps => <ListingShow {...routerProps} /> }/>
+
                 <Route path="/*" render={routerProps => <NotFound {...routerProps} /> } />
+
             </Switch>
         </div>
     )

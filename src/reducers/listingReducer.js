@@ -23,11 +23,11 @@ export default function listingReducer(state = {
             }
 
         case "ADD_LISTING":
-            if (state.filter !== "latest" || state[state.filter].length === 0) return {...state, shouldRedirect: true}
-            return {...state, [state.filter]: [action.listing, ...state[state.filter]]}
+            if (state.filter !== "latest" || state[state.filter].length === 0) return {...state, show: action.listing, shouldRedirect: true}
+            return {...state, [state.filter]: [action.listing, ...state[state.filter]], show: action.listing, shouldRedirect: true}
 
         case "SHOW_LISTING":
-            return {...state, show: action.listing, loading: false, shouldRedirect: true}
+            return {...state, show: action.listing, loading: false}
 
         case "ADD_ERRORS":
             return {...state, loading: false}

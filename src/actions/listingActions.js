@@ -13,6 +13,12 @@ const configObj = input => {
     }
 }
 
+export const redirected = () => {
+    return ({
+        type: "REDIRECTED"
+    })
+}
+
 export const fetchListings = (pageNumber) => {
     return (dispatch) => {
         dispatch({type: "LOADING_LISTINGS"})

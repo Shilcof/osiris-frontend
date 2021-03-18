@@ -1,13 +1,18 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { postListing } from "../../actions/listingActions"
+import { postListing, redirected } from "../../actions/listingActions"
 
 const ListingForm = (props) => {
 
     const shouldRedirect = useSelector(state=>state.listings.shouldRedirect)
+    const show = useSelector(state=>state.listings.show)
 
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        return dispatch(redirected)
+    }, [dispatch])
 
     const [listing, setListing] = useState({
         name: "",
@@ -28,6 +33,8 @@ const ListingForm = (props) => {
         e.preventDefault()
         dispatch(postListing(listing))
     }
+
+    if (shouldRedirect) props.history.push(`/listings/${show.id}`)
 
     return (
         <form onSubmit={handleSubmit}>
