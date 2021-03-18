@@ -29,7 +29,7 @@ const ListingCard = (props) => {
 
     return (
         <div className="col pb-3" >
-                <Link to={`/listings/${props.listing.id}`}>
+            <Link to={`/listings/${props.listing.id}`}>
                 <div className="card h-100" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
                     <ListingCardImage image_url={props.listing.image_url} hover={hover} />
                     {hover ? <ListingCardInfo listing={props.listing} /> : null}

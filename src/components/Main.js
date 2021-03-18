@@ -2,7 +2,7 @@ import {Route, Switch} from 'react-router-dom';
 import ListingsIndex from './listings/ListingsIndex'
 import ListingForm from './listings/ListingForm'
 import ListingShow from './listings/ListingShow'
-import NotFound from './NotFound'
+import NotFound from './errors/NotFound'
 import About from './about/About'
 
 const Main = () => {

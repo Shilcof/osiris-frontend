@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchListing } from "../../actions/listingActions"
 import { resetErrors } from "../../actions/errorActions"
 
-import NotFound from "../NotFound"
+import NotFound from "../errors/NotFound"
 
 const ListingShow = (props) => {
 
