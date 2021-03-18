@@ -36,7 +36,7 @@ const ListingsIndex = () => {
 
     return (
         <>
-            <div id="listing-container" className="container" style={{maxWidth: 1000}}>
+            <div id="listing-container" >
                 <div className="row row-cols-1 row-cols-md-3 gx-3">
                     {listings.map(listing=><Listing key={listing.id} listing={listing} />)}
                 </div>

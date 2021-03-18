@@ -7,7 +7,7 @@ import About from './about/About'
 
 const Main = () => {
     return (
-        <div className="container-fluid pt-3">
+        <div className="container-fluid pt-3 container" style={{maxWidth: 1000}} >
             <Switch>
 
                 <Route exact path="/" render={routerProps => <ListingForm {...routerProps}/>} />
