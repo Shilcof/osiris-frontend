@@ -28,6 +28,9 @@ export default function listingReducer(state = {
         case "SHOW_LISTING":
             return {...state, show: action.listing, loading: false}
 
+        case "ADD_ERRORS":
+            return {...state, loading: false}
+
         // case "DELETE_LISTING":
         //     const index = state.findIndex(r=>r.id===action.id)
         //     return [...state.slice(0,index), ...state.slice(index+1)]

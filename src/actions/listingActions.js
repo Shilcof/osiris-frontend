@@ -27,8 +27,15 @@ export const fetchListing = (id) => {
         dispatch({type: "LOADING_LISTINGS"})
         fetch(listingURL + '/' + id)
             .then(res=>res.json())
-            .then(listing => dispatch({type: "SHOW_LISTING", listing}))
-            .catch(errors => dispatch({type: "ADD_ERRORS", errors}))
+            .then(listing => {
+                if (listing.name) {
+                    dispatch({type: "SHOW_LISTING", listing})
+                } else {
+                    throw listing;
+                }
+            })
+            .catch(errors => {
+                dispatch({type: "ADD_ERRORS", errors})})
     }
 }
 

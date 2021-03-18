@@ -6,6 +6,7 @@ const ListingShow = (props) => {
 
     const listing = useSelector(store=>store.listings.show)
     const loading = useSelector(store=>store.listings.loading)
+    const errors = useSelector(store=>store.errors)
     const dispatch = useDispatch()
 
     useEffect(()=> {
@@ -29,13 +30,11 @@ const ListingShow = (props) => {
         )
     }
 
-    console.log(listing, loading)
-
     return (
         <div className="card h-100">
             { loading ? "LOADING" : null }
             { listing.name ? showListing() : null }
-            {  }
+            { Object.keys(errors).length === 0 ? null : errors.error}
         </div>
     )
 }
