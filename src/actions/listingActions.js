@@ -76,12 +76,19 @@ export const postListing = listing => {
     formData.append('description', listing.description)
     formData.append('seller_id', listing.seller_id)
     formData.append('image', listing.image)
-    console.log(formData)
     return (dispatch) => {
         dispatch(resetErrors)
         fetch(listingURL, configObj(formData))
             .then(res=>res.json())
-            .then(listing => dispatch(addListing(listing)))
-            .catch(errors => dispatch(addErrors(errors)))
+            .then(listing => {
+                if (listing.errors) {
+                    throw listing;
+                } else {
+                    dispatch(addListing(listing))
+                }
+            })
+            .catch(errors => {
+                dispatch(addErrors(errors))
+            })
     }
 }

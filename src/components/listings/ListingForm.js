@@ -8,6 +8,7 @@ const ListingForm = (props) => {
 
     const shouldRedirect = useSelector(state=>state.listings.shouldRedirect)
     const show = useSelector(state=>state.listings.show)
+    const errors = useSelector(state=>state.errors)
 
     const dispatch = useDispatch()
 
@@ -46,15 +47,20 @@ const ListingForm = (props) => {
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
                     <label htmlFor="name" className="form-label" >Listing name</label>
-                    <input type="text" id="name" value={listing.name} onChange={handleChange} className="form-control" ></input>
-                    {/* attach errors here from error reducer */}
+                    <input type="text" id="name" value={listing.name} onChange={handleChange} 
+                    className={errors.name ? "form-control is-invalid" : "form-control"} 
+                    ></input>
+                    {errors.name ? <div className="invalid-feedback" >Name {errors.name.join(", ")}</div> : null}
                 </div>
             </div>
 
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
                     <label htmlFor="description" className="form-label" >Listing description</label>
-                    <textarea rows="5" id="description" value={listing.description} onChange={handleChange} className="form-control" ></textarea>
+                    <textarea rows="5" id="description" value={listing.description} onChange={handleChange} 
+                    className={errors.description ? "form-control is-invalid" : "form-control"}
+                    ></textarea>
+                    {errors.description ? <div className="invalid-feedback" >Description {errors.description.join(", ")}</div> : null}
                 </div>
             </div>
 
@@ -72,14 +78,3 @@ const ListingForm = (props) => {
 }
 
 export default ListingForm
-
-
-// const displayErrors = (errors) => {
-//     const messages = errors.message.split(',')
-//     errorMessages.innerHTML = `
-//         <p>${messages.length} errors prevented saving this track.</p>
-//     `
-//     for (const error of messages) {
-//         errorMessages.innerHTML += `<li>${error}.</li>`
-//     }
-// }
