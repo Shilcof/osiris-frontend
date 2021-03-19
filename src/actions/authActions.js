@@ -90,7 +90,7 @@ export const login = seller => {
         .then(res => res.json())
         .then(data => {
             if (!!data.errors) {
-                alert('Invalid Credentials')
+                dispatch(addErrors(data.errors))
             } else {
                 sessionStorage.setItem('accessToken', data.jwt)
                 dispatch(loginSeller(data.seller))
