@@ -18,9 +18,9 @@ const Main = () => {
 
                 <Route exact path="/" render={routerProps => <div>Home</div>} />
 
-                <Route exact path="/signup" render={routerProps => <SignUp {...routerProps}/>} />
+                <Route exact path="/signup" render={routerProps => currentSeller ? <Redirect to="/" /> : <SignUp {...routerProps}/>} />
 
-                <Route exact path="/login" render={routerProps => <LogIn {...routerProps}/>} />
+                <Route exact path="/login" render={routerProps => currentSeller ? <Redirect to="/" /> : <LogIn {...routerProps}/>} />
 
                 <Route exact path="/about" render={() => <About />} />
 

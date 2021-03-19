@@ -6,7 +6,6 @@ import { createSeller } from "../../actions/authActions"
 
 const SignUp = (props) => {
 
-    const currentSeller = useSelector(state=>state.auth.currentSeller)
     const errors = useSelector(state=>state.errors)
 
     const dispatch = useDispatch()
@@ -36,8 +35,6 @@ const SignUp = (props) => {
     const handleClick = () => {
         props.history.push(`/login`)
     }
-
-    if (currentSeller) props.history.push(`/`)
 
     return (
         <div className="container"  style={{maxWidth: "500px"}}>
