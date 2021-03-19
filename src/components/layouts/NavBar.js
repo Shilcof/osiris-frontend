@@ -1,10 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogOut from './LogOut';
+
+import { logout } from "../../actions/authActions"
 
 const NavBar = () => {
 
+  const dispatch = useDispatch()
+
+  const handleClick = () => {
+    dispatch(logout())
+  }
   const currentSeller = useSelector(store=>store.auth.currentSeller)
 
   return (
@@ -30,7 +36,23 @@ const NavBar = () => {
       >
         Listings
       </NavLink>
-      {currentSeller ? <LogOut /> : null}
+      {currentSeller ? 
+        <NavLink 
+          onClick={handleClick}
+          className="nav-item nav-link text-danger"
+          to="/"
+        >
+          Logout
+        </NavLink>
+      : 
+        <NavLink 
+          className="nav-item nav-link text-success"
+          activeClassName="font-weight-bold"
+          to="/login"
+        >
+          Login
+        </NavLink>
+      }
     </div>
   );
 }
