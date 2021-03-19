@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { resetErrors } from "../../actions/errorActions"
 import { createSeller } from "../../actions/authActions"
-import { Redirect } from "react-router-dom"
 
 const SignUp = (props) => {
 
@@ -30,10 +29,14 @@ const SignUp = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        console.log(seller)
+        dispatch(resetErrors())
         dispatch(createSeller(seller))
     }
 
     if (currentSeller) props.history.push(`/about`)
+
+    console.log(errors)
 
     return (
         <form onSubmit={handleSubmit}>
@@ -42,7 +45,7 @@ const SignUp = (props) => {
                 <div className="col-md-12 mb-3">
                     <label htmlFor="email" className="form-label" >Email</label>
                     <input type="text" id="email" value={seller.email} onChange={handleChange} 
-                        className={errors.name ? "form-control is-invalid" : "form-control"} 
+                        className={errors.email ? "form-control is-invalid" : "form-control"} 
                     ></input>
                     {errors.email ? <div className="invalid-feedback" >Email {errors.email.join(", ")}</div> : null}
                 </div>
@@ -51,14 +54,14 @@ const SignUp = (props) => {
             <div className="form-row" >
                 <div className="col-md-6 mb-3">
                     <label htmlFor="password" className="form-label" >Password</label>
-                    <input type="text" id="password" value={seller.password} onChange={handleChange} 
+                    <input type="password" id="password" value={seller.password} onChange={handleChange} 
                         className={errors.password ? "form-control is-invalid" : "form-control"}
                     ></input>
                     {errors.password ? <div className="invalid-feedback" >Password {errors.password.join(", ")}</div> : null}
                 </div>
                 <div className="col-md-6 mb-3">
                     <label htmlFor="password_confirmation" className="form-label" >Confirm password</label>
-                    <input type="text" id="password_confirmation" value={seller.password_confirmation} onChange={handleChange} 
+                    <input type="password" id="password_confirmation" value={seller.password_confirmation} onChange={handleChange} 
                         className={errors.password_confirmation ? "form-control is-invalid" : "form-control"}
                     ></input>
                     {errors.password_confirmation ? <div className="invalid-feedback" >Confirmation {errors.password_confirmation.join(", ")}</div> : null}

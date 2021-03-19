@@ -27,7 +27,7 @@ export const createSeller = seller => {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(seller)
+        body: JSON.stringify({seller})
     }
 
     return (dispatch) => {
@@ -62,6 +62,7 @@ export const autoLogin = () => {
             fetch(baseURL + `/profile`, configObj)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 if (!!data.errors) {
                     sessionStorage.removeItem('accessToken')
                 } else {
@@ -79,7 +80,7 @@ export const login = seller => {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(seller)
+        body: JSON.stringify({seller})
     }
 
     return (dispatch) => {
