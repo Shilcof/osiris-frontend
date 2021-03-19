@@ -67,7 +67,7 @@ const ListingForm = (props) => {
             <div className="input-group mb-3">
                 <div className="custom-file">
                     <input type="file" className="custom-file-input" id="image" onChange={handleFileAddition}></input>
-                    <label className="custom-file-label" htmlFor="image">{listing.image.name ? listing.image.name : "Choose file"}</label>
+                    <label className="custom-file-label" htmlFor="image">{listing.image.name ? listing.image.name : "Choose listing image file"}</label>
                 </div>
             </div>
 

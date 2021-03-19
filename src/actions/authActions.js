@@ -14,6 +14,12 @@ export const logoutSeller = () => {
     })
 }
 
+export const loadingSeller = () => {
+    return ({
+        type: "LOADING_SELLER"
+    })
+}
+
 export const createSeller = seller => {
     const configObj = {
         method: 'POST',
@@ -25,7 +31,7 @@ export const createSeller = seller => {
     }
 
     return (dispatch) => {
-        dispatch({ type: 'LOADING' })
+        dispatch(loadingSeller())
         fetch(baseURL + `/sellers`, configObj)
         .then(res => res.json())
         .then(data => {
@@ -77,7 +83,7 @@ export const login = seller => {
     }
 
     return (dispatch) => {
-        dispatch({ type: 'LOADING' })
+        dispatch(loadingSeller())
 
         fetch(baseURL + `/login`, configObj)
         .then(res => res.json())
