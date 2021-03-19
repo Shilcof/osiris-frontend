@@ -5,7 +5,7 @@ const ListingCardImage = props => {
             className="card-img" 
             style={{
                 width: "100%",
-                height: "100%",
+                height: "200px",
                 objectFit: "cover",
                 filter: props.hover ? "brightness(75%)" : null
             }} 
