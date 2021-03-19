@@ -4,13 +4,15 @@ import ListingForm from './listings/ListingForm'
 import ListingShow from './listings/ListingShow'
 import NotFound from './errors/NotFound'
 import About from './about/About'
+import SignUp from './auth/SignUp';
 
 const Main = () => {
     return (
         <div className="container-fluid pt-3 container" style={{maxWidth: 1000}} >
             <Switch>
 
-                <Route exact path="/" render={routerProps => <ListingForm {...routerProps}/>} />
+                <Route exact path="/" render={routerProps => <SignUp {...routerProps}/>} />
+                {/* <Route exact path="/" render={routerProps => <ListingForm {...routerProps}/>} /> */}
 
                 <Route exact path="/about" render={() => <About />} />
 
