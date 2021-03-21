@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Osiris-backend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend code for Osiris, a React-Redux single page web application (git repo for backend here https://github.com/Shilcof/osiris-backend) where users can sign up and log in to create listings for items that they want to be rehomed, which are stored in a database handled in the backend by Ruby on Rails.
 
-## Available Scripts
+The app features an implementation of infinite scroll to dynamically load in listings as the user views the listings page.
 
-In the project directory, you can run:
+## Installation
 
-### `yarn start`
+Osiris was developed using Reactt-Redux and Ruby on Rails.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run Osiris on your machine, you must first download the files from this repository and the backend. On the backend you must change into the main directory in your terminal.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Then you must use bundler to install the required gems.
 
-### `yarn test`
+```bash
+bundle install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To set up the database for the application and seed it with dummy data, you must run:
 
-### `yarn build`
+```bash
+rails db:migrate && rails db:seed
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To prepare the frontend, you must then enter the frontend's main folder and run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm i
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `yarn eject`
+To run the application on your computer you can host it with:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+rails s
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+and then in the front end directory, run:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You will then be prompted to host the server on another port to not conflict with the rails server.
 
-## Learn More
+To stop hosting the aplication, simply enter control + 'C' into the terminal where it is running.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
+Pull requests are welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
