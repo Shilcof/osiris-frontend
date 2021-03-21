@@ -23,13 +23,16 @@ const ListingShow = (props) => {
         return (
             <>
                 <ListingCardImage image_url={listing.image_url} />
-                <div className="card-img-overlay">
+                <div className="card-footer">
                     <h5 className="card-title">
                         {listing.name}
                     </h5>
                     <p className="card-text">
-                        {listing.description.slice(0,100)+"..."}
+                        {listing.description}
                     </p>
+                    <h6 className="card-text">
+                        Contact the seller at: {listing.seller_email}
+                    </h6>
                 </div>
             </>
         )
