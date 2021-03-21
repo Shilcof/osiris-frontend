@@ -4,13 +4,6 @@ import { addErrors, resetErrors } from './errorActions'
 
 const listingURL = baseURL + '/listings'
 
-const configObj = input => {
-    return {
-        method: 'POST',
-        body: input
-    }
-}
-
 export const addListings = listings => {
     return ({
         type: "ADD_LISTINGS",
@@ -77,22 +70,32 @@ export const fetchListing = (id) => {
 }
 
 export const postListing = listing => {
+    const token = sessionStorage.accessToken
+    
     const formData = new FormData()
     formData.append('name', listing.name)
     formData.append('description', listing.description)
     formData.append('seller_id', listing.seller_id)
     formData.append('image', listing.image)
+
+    const configObj = {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Authorization': `Bearer ${ token }`
+        }
+    }
+
     return (dispatch) => {
         dispatch(resetErrors())
-        fetch(listingURL, configObj(formData))
+        fetch(listingURL, configObj)
             .then(res=>res.json())
             .then(listing => {
                 if (listing.errors) {
-                    throw listing;
+                    dispatch(addErrors(listing))
                 } else {
                     dispatch(addListing(listing))
                 }
             })
-            .catch(errors => dispatch(addErrors(errors)))
     }
 }

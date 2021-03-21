@@ -7,6 +7,7 @@ import About from './about/About'
 import SignUp from './auth/SignUp';
 import { useSelector } from 'react-redux';
 import LogIn from './auth/LogIn';
+import Home from './home/Home';
 
 const Main = () => {
 
@@ -16,7 +17,7 @@ const Main = () => {
         <div className="container-fluid pt-3 container" style={{maxWidth: 1000}} >
             <Switch>
 
-                <Route exact path="/" render={routerProps => <div>Home</div>} />
+                <Route exact path="/" render={routerProps => <Home {...routerProps}/>} />
 
                 <Route exact path="/signup" render={routerProps => currentSeller ? <Redirect to="/" /> : <SignUp {...routerProps}/>} />
 

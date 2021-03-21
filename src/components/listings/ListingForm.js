@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { postListing, redirected } from "../../actions/listingActions"
 import { resetErrors } from "../../actions/errorActions"
 
-const ListingForm = (props) => {
-
-    const shouldRedirect = useSelector(state=>state.listings.shouldRedirect)
-    const show = useSelector(state=>state.listings.show)
+const ListingForm = () => {
     const errors = useSelector(state=>state.errors)
 
     const dispatch = useDispatch()
@@ -22,7 +19,6 @@ const ListingForm = (props) => {
     const [listing, setListing] = useState({
         name: "",
         description: "",
-        seller_id: "4",
         image: {}
     })
 
@@ -38,8 +34,6 @@ const ListingForm = (props) => {
         e.preventDefault()
         dispatch(postListing(listing))
     }
-
-    if (shouldRedirect) props.history.push(`/listings/${show.id}`)
 
     return (
         <form onSubmit={handleSubmit}>
