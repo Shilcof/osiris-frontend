@@ -37,9 +37,9 @@ const ListingShow = (props) => {
 
     return (
         <>
-            { loading ? "LOADING" : null }
-            { listing.name ? <div className="card h-100">{showListing()}</div> : null }
-            { Object.keys(errors).length === 0 ? null : <NotFound match={props.match} />}
+            { loading && "LOADING" }
+            { listing.name && <div className="card h-100">{showListing()}</div> }
+            { Object.keys(errors).length !== 0 && <NotFound match={props.match} />}
         </>
     )
 }
