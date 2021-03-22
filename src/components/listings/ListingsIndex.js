@@ -55,7 +55,7 @@ const ListingsIndex = () => {
                     {listings.map(listing=><Listing key={listing.id} listing={listing} />)}
                 </div>
             </div>
-            {loading ? <LoadingListing /> : null}
+            {loading && <LoadingListing />}
         </>
     )
 }
