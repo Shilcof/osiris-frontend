@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import Incrementor from "../incrementor/Incrementor"
 import LoggedIn from "./LoggedIn"
 import LoggedOut from "./LoggedOut"
 
@@ -14,6 +15,7 @@ const Home = props => {
     return (
         <div>
             {currentSeller ? <LoggedIn currentSeller={currentSeller} /> : <LoggedOut />}
+            {/* <Incrementor /> */}
         </div>
     )
 }
