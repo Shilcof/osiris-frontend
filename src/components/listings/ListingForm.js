@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { postListing, redirected } from "../../actions/listingActions"
 import { resetErrors } from "../../actions/errorActions"
 
-const ListingForm = () => {
+import { Map, GoogleApiWrapper } from 'google-maps-react'
+
+const ListingForm = props => {
     const errors = useSelector(state=>state.errors)
 
     const dispatch = useDispatch()
@@ -34,6 +36,11 @@ const ListingForm = () => {
         e.preventDefault()
         dispatch(postListing(listing))
     }
+
+    const mapStyles = {
+        width: '100%',
+        height: '100%',
+    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -65,10 +72,21 @@ const ListingForm = () => {
                 </div>
             </div>
 
+            <div className="input-group mb-3 rounded" style={{height: '300px'}} >
+                <Map
+                    google={props.google}
+                    zoom={8}
+                    style={mapStyles}
+                    initialCenter={{ lat: 47.444, lng: -122.176}}
+                />
+            </div>
+
             <input type="submit" className="btn btn-outline-primary btn-block" ></input>
 
         </form>
     )
 }
 
-export default ListingForm
+export default GoogleApiWrapper({
+    apiKey: process.env.REACT_APP_GOOGLE_MAP
+})(ListingForm)
