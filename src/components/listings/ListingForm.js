@@ -72,10 +72,10 @@ const ListingForm = props => {
                 </div>
             </div>
 
-            <div className="input-group mb-3 rounded" style={{height: '300px'}} >
+            <div className="input-group mb-3 border rounded" style={{height: '300px'}} >
                 <Map
                     google={props.google}
-                    zoom={8}
+                    zoom={14}
                     style={mapStyles}
                     initialCenter={{ lat: 47.444, lng: -122.176}}
                 />
