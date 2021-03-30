@@ -76,7 +76,7 @@ const ListingForm = props => {
 
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="name" className="form-label" >Listing name</label>
+                    <label htmlFor="name" className="form-label" >Name</label>
                     <input type="text" id="name" value={listing.name} onChange={handleChange} 
                         className={errors.name ? "form-control is-invalid" : "form-control"} 
                     ></input>
@@ -86,7 +86,7 @@ const ListingForm = props => {
 
             <div className="form-row" >
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="description" className="form-label" >Listing description</label>
+                    <label htmlFor="description" className="form-label" >Description</label>
                     <textarea rows="5" id="description" value={listing.description} onChange={handleChange} 
                         className={errors.description ? "form-control is-invalid" : "form-control"}
                     ></textarea>
@@ -97,10 +97,15 @@ const ListingForm = props => {
             <div className="input-group mb-3">
                 <div className="custom-file">
                     <input type="file" className="custom-file-input" id="image" onChange={handleFileAddition}></input>
-                    <label className="custom-file-label" htmlFor="image">{listing.image.name ? listing.image.name : "Choose listing image file"}</label>
+                    <label className="custom-file-label" htmlFor="image">{listing.image.name ? listing.image.name : "Choose image file"}</label>
                 </div>
             </div>
 
+            <div className="form-row" >
+                <div className="col-md-12">
+                    <label className="form-label" >Location</label>
+                </div>
+            </div>
             <div className="input-group mb-3 border rounded" style={{height: '300px'}} >
                 <Map
                     google={props.google}
