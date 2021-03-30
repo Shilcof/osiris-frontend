@@ -1,4 +1,4 @@
-# Osiris-backend
+# Osiris-frontend
 
 Frontend code for Osiris, a React-Redux single page web application (git repo for backend here https://github.com/Shilcof/osiris-backend) where users can sign up and log in to create listings for items that they want to be rehomed, which are stored in a database handled in the backend by Ruby on Rails.
 
