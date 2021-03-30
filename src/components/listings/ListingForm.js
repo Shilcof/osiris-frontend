@@ -24,7 +24,7 @@ const ListingForm = props => {
         name: "",
         description: "",
         image: {},
-        latLng: { lat: 47.444, lng: -122.176}
+        latLng: props.location
     })
 
     // adds form change handling
@@ -54,6 +54,7 @@ const ListingForm = props => {
         height: '100%',
     };
 
+    // handles centering of marker on map move
     const handleBoundsChanged = () => {
         if (refMap.current) {
             const mapCenter = {
