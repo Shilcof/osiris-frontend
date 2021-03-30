@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { postListing, redirected } from "../../actions/listingActions"
 import { resetErrors } from "../../actions/errorActions"
 
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 const ListingForm = props => {
     const errors = useSelector(state=>state.errors)
@@ -21,8 +21,11 @@ const ListingForm = props => {
     const [listing, setListing] = useState({
         name: "",
         description: "",
-        image: {}
+        image: {},
+        latLng: { lat: 47.444, lng: -122.176}
     })
+
+    const refMap = useRef(null);
 
     const handleChange = e => {
         setListing({...listing, [e.target.id]: e.target.value})
@@ -40,6 +43,16 @@ const ListingForm = props => {
     const mapStyles = {
         width: '100%',
         height: '100%',
+    };
+
+    const handleBoundsChanged = () => {
+        if (refMap.current) {
+            const mapCenter = {
+                lat: refMap.current.map.center.lat(),
+                lng: refMap.current.map.center.lng()
+            }
+            setListing({...listing, latLng: mapCenter})
+        }
     };
 
     return (
@@ -77,8 +90,15 @@ const ListingForm = props => {
                     google={props.google}
                     zoom={14}
                     style={mapStyles}
-                    initialCenter={{ lat: 47.444, lng: -122.176}}
-                />
+                    streetViewControl={false}
+                    initialCenter={listing.latLng} 
+                    ref={refMap}
+                    onBoundsChanged={useCallback(handleBoundsChanged,[handleBoundsChanged])} 
+                >
+                    <Marker 
+                        position={listing.latLng}
+                    />
+                </Map>
             </div>
 
             <input type="submit" className="btn btn-outline-primary btn-block" ></input>
