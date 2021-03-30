@@ -11,6 +11,7 @@ const ListingForm = props => {
 
     const dispatch = useDispatch()
 
+    // adds effects to be called on form final unmount
     useEffect(()=>{
         return () => {
             dispatch(redirected())
@@ -18,6 +19,7 @@ const ListingForm = props => {
         }
     }, [dispatch])
 
+    // sets state for blank listing
     const [listing, setListing] = useState({
         name: "",
         description: "",
@@ -25,21 +27,28 @@ const ListingForm = props => {
         latLng: { lat: 47.444, lng: -122.176}
     })
 
-    const refMap = useRef(null);
-
+    // adds form change handling
     const handleChange = e => {
         setListing({...listing, [e.target.id]: e.target.value})
     }
 
+    // adds form file upload handling
     const handleFileAddition = e => {
         setListing({...listing, image: e.target.files[0]})
     }
 
+    // handles form submission
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(postListing(listing))
     }
 
+    // ------------------- Google Maps start -------------------
+
+    // sets ref for google map to allow finding it
+    const refMap = useRef(null);
+
+    // map styling
     const mapStyles = {
         width: '100%',
         height: '100%',
@@ -54,6 +63,8 @@ const ListingForm = props => {
             setListing({...listing, latLng: mapCenter})
         }
     };
+
+    // -------------------  Google Maps end  -------------------
 
     return (
         <form onSubmit={handleSubmit}>
