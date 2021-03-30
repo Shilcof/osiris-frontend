@@ -48,6 +48,10 @@ const ListingForm = props => {
     // sets ref for google map to allow finding it
     const refMap = useRef(null);
 
+    useEffect(()=>{
+        refMap.current.map.panTo(props.location)
+    },[props.location])
+
     // map styling
     const mapStyles = {
         width: '100%',

@@ -7,16 +7,15 @@ const LoggedIn = props => {
 
     // geolocator location
     const success = position => {
-        const location = {
+        const coordinates = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         }
-        setLocation(location)
+        setLocation(coordinates)
     }
 
     useEffect(()=>{
         if (navigator.geolocation) {
-            console.log("hi")
             navigator.permissions
                 .query({ name: "geolocation" })
                 .then(function (result) {
