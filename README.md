@@ -6,7 +6,7 @@ The app features an implementation of infinite scroll to dynamically load in lis
 
 ## Installation
 
-Osiris was developed using Reactt-Redux and Ruby on Rails.
+Osiris was developed using React-Redux and Ruby on Rails.
 
 To run Osiris on your machine, you must first download the files from this repository and the backend. On the backend you must change into the main directory in your terminal.
 
