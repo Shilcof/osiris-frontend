@@ -3,7 +3,7 @@ import ListingForm from '../listings/ListingForm'
 
 const LoggedIn = props => { 
     
-    const [location, setLocation] = useState({ lat: 47.444, lng: -122.176 })
+    const [location, setLocation] = useState({ lat: 51.501364, lng: -0.141890 })
 
     // geolocator location
     const success = position => {
